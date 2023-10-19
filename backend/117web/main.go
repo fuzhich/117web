@@ -1,9 +1,13 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"117web/config"
+	"117web/route"
+)
 
 func main() {
-
-	router := gin.New()
-	router.Run()
+	config.Init()
+	router := route.InitRouter()
+	addr := ":" + config.Config.GetString("system.port")
+	router.Run(addr)
 }
