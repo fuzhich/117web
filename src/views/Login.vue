@@ -1,5 +1,6 @@
 <template>
   <div id="background">
+    <!-- <el-alert title="未注册或账号密码错误" type="error" center show-icon @close="hello"></el-alert> -->
     <!-- <div id="bobo"><img src="../assets/气泡1.png" alt=""></div> -->
     <div class="box"></div>
 
@@ -12,18 +13,17 @@
           <el-input v-model="username" placeholder="请输入用户名"></el-input>
         </div>
         <div id="input">
-          <el-input
-            placeholder="请输入密码" v-model="password"
-            show-password
-          ></el-input>
+          <el-input placeholder="请输入密码" v-model="password" show-password ></el-input>
         </div>
-        <el-button type="primary" id="btn" @click="submit()">登录</el-button>
+        
       </div>
+      <el-button type="primary" id="btn1" @click="submit()">登录</el-button>
+        <el-button type="primary" id="btn2"><router-link to="/sign">注册</router-link></el-button>
     </div>
   </div>
 </template>
 
-<style >
+<style scoped>
 #background {
   position: fixed;
   height: 100%;
@@ -85,15 +85,23 @@
   border-radius: 25px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  
+  
 }
 #input {
   width: 300px;
   margin-top: 30px;
 }
 
-#btn {
-  margin-top: 20px;
+#btn1 {
+  position: absolute;
+  top: 75%;
+  left: 22%;
+}
+#btn2 {
+  position: absolute;
+  top: 75%;
+  left: 58%;
 }
 
 #bobo {
@@ -162,13 +170,18 @@ export default {
         )
         .then(
           (res) => {
-            console.log(JSON.stringify(res.data.Code));
-          },
-          (err) => {
-            console.log(JSON.stringify(err.data.Code));
+            console.log(res.data.Code);
+            let code = res.data.Code;
+               if (code == "420") {
+                 alert("登录失败");
+               } 
+               else if (code == "200") {
+                alert("登录成功");
+               }
           }
         );
     },
+    
   },
 };
 </script>

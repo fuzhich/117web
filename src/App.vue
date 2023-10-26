@@ -3,15 +3,15 @@
     <router-view>
       
     </router-view>
-    <login></login>
+   
   </div>
 </template>
 
 <script>
-import Login from './views/Login.vue'
+
 
 export default {
-  components: { Login }, 
+  components: { }, 
 }
 </script>
 <style>
