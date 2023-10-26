@@ -11,9 +11,7 @@
 import Login from './views/Login.vue'
 
 export default {
-  components: { Login },
-  
-  
+  components: { Login }, 
 }
 </script>
 <style>

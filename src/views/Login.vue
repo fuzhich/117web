@@ -153,9 +153,8 @@ export default {
   },
   methods: {
     submit() {
-      this.$axios
-        .post(
-          "http://10.17.100.5:8080/sso/login",
+      this.$axios.post(
+          "sso/login",
           {
             username: this.username,
             password: this.password,
@@ -163,10 +162,10 @@ export default {
         )
         .then(
           (res) => {
-            console.log(JSON.stringify(res));
+            console.log(JSON.stringify(res.data.Code));
           },
           (err) => {
-            console.log(err.Msg);
+            console.log(JSON.stringify(err.data.Code));
           }
         );
     },
